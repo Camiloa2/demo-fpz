@@ -163,7 +163,7 @@ function handleTerminos(respuesta) {
       currentStep = "esperando_nit";
 
       addMessage(
-        "¡Perfecto! Iniciemos el registro de tu negocio. 🏢\n\n¿Cuál es el <strong>NIT de tu negocio o cédula</strong>? (Ingresa el NIT sin el último dígito de verificación) 📄",
+        "¿Cuál es el <strong>NIT de tu negocio o cédula</strong>? (Ingresa el NIT sin el último dígito de verificación) 📄",
         "bot"
       );
 
@@ -300,7 +300,7 @@ function confirmarNit(esCorrecto) {
 
       } else {
         addMessage(
-          "Tu negocio aún no está registrado.\n\nVamos a crear tu registro ahora mismo.",
+          "¡Perfecto! Iniciemos el registro de tu negocio. 🏢",
           "bot"
         );
         mostrarBotonCompletarRegistro();
@@ -434,11 +434,7 @@ function confirmarRegistroFinal(optionsBlock) {
 
   showTyping(() => {
 
-    addMessage("¡Registro exitoso! 🎉", "bot");
-
-    setTimeout(() => {
-      mostrarMensajeFestival();
-    }, 800);
+    mostrarMensajeFestival();
 
   });
 }
