@@ -6,21 +6,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 /* ====== CONTENEDOR PRINCIPAL ====== */
 .chat-container {
   width: 90%;
-  max-width: 380px;
-  aspect-ratio: 380 / 700;
-  height: 80vh;
+  max-width: 420px;
+  height: 85vh;
   background: #111b21;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
 /* ====== HEADER ====== */
@@ -165,7 +165,8 @@ body {
   margin-top: 6px;
   max-width: 75%;
   align-self: flex-start;
-  height: auto;        /* 👈 FORZAR AUTO */
+  height: auto;
+  /* 👈 FORZAR AUTO */
 }
 
 .options button {
@@ -200,8 +201,15 @@ body {
 
 /* ====== ANIMACIONES ====== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .text {
@@ -217,7 +225,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
 }
@@ -226,7 +234,7 @@ body {
   background: #111b21;
   padding: 20px;
   border-radius: 12px;
-  width: 300px;
+  width: min(300px, 90vw);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -306,7 +314,86 @@ body {
 
 .btn-icon-home svg {
   display: block;
-  width: 28px; /* Ajusta tamaño del ícono */
+  width: 28px;
+  /* Ajusta tamaño del ícono */
   height: 28px;
-  fill: white; /* Casa blanca */
+  fill: white;
+  /* Casa blanca */
+}
+
+/* ====== RESPONSIVE ====== */
+
+/* Móviles pequeños y medianos (≤ 480px): pantalla completa */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    height: 100dvh;
+  }
+
+  .chat-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .chat-header {
+    padding: 12px 10px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .status {
+    font-size: 11px;
+  }
+
+  .chat-messages {
+    padding: 14px 10px;
+    gap: 10px;
+  }
+
+  .message {
+    font-size: 13px;
+    max-width: 82%;
+  }
+
+  .options button {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  .chat-input {
+    padding: 8px;
+  }
+
+  .chat-input input {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .modal-content {
+    width: 92vw;
+    padding: 16px;
+  }
+
+  .btn-fijo {
+    bottom: 14px;
+    right: 14px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}
+
+/* Tablets (481px - 768px): tarjeta un poco más ancha */
+@media (min-width: 481px) and (max-width: 768px) {
+  .chat-container {
+    width: 85%;
+    max-width: 480px;
+    height: 88vh;
+    border-radius: 16px;
+  }
 }
