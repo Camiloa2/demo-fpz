@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festival Zenú Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="chat-container">
+
+  <div class="chat-header">
+    <div class="profile">
+      <img src="zenu profile.jpg" class="avatar" />
+      <div style="flex:1;">
+        <div class="name">Festival del perro Zenú</div>
+        <div class="status">En línea</div>
+      </div>
+      <button id="btnVolverMenuHeader" class="btn-icon-home" title="Volver al menú">
+        <!-- Ícono de casa blanco -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="chat-messages" id="chat"></div>
+
+  <div class="chat-input">
+    <input type="text" id="userInput" placeholder="Escribe un mensaje">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+
+</div>
+
+<!-- 🔥 INPUT OCULTO PARA SUBIR IMAGEN -->
+<input type="file" id="inputFactura" accept="image/*" style="display: none;">
+<input type="file" id="inputFotoGanador" accept="image/*" style="display: none;">
+
+<!-- 🔥 MODAL DE REGISTRO -->
+<div id="registroModal" class="modal">
+  <div class="modal-content">
+    <h3>Completar registro</h3>
+
+    <input type="text" placeholder="Razón social del negocio" id="razonSocial">
+    <input type="text" placeholder="Nombre del responsable" id="responsable">
+
+    <select id="ciudad">
+      <option value="">Selecciona ciudad</option>
+      <option>Medellín</option>
+      <option>Bogotá</option>
+      <option>Barranquilla / Cartagena / Santa Marta</option>
+    </select>
+
+    <input type="text" placeholder="Dirección exacta del local" id="direccion">
+    <input type="text" placeholder="Número de cédula" id="cedula">
+
+    <button onclick="guardarRegistro()">Enviar</button>
+  </div>
+</div>
+<button id="btnVolverMenu" class="btn-fijo" title="Volver al menú">🏠</button>
+<script src="script.js"></script>
+</body>
+</html>
