@@ -251,6 +251,30 @@ function manejarFlujo(textoUsuario) {
     // Aquí podemos manejar inputs de facturas o simplemente ignorarlos
     return;
   }
+
+    // 🆘 Esperando mensaje para asesor
+  if (currentStep === "esperando_mensaje_asesor") {
+
+    const mensajeUsuario = textoUsuario;
+
+    showTyping(() => {
+      addMessage(
+        `Gracias por escribirnos 🙌✨  
+
+  Recibimos tu mensaje y nuestro equipo lo estará revisando con prioridad.  
+
+  Muy pronto uno de nuestros asesores se pondrá en contacto contigo para ayudarte. 💬🌭  
+
+  ¡Gracias por seguir jugando con toda la actitud!`,
+        "bot"
+      );
+
+      // 🔥 Importante: cerrar el estado
+      currentStep = null;
+    });
+
+    return;
+  }
 }
 
 function mostrarOpcionesConfirmacionNit() {
@@ -444,7 +468,7 @@ function mostrarMensajeFestival() {
   addMessage(
 `🎉 ¡Tu negocio se ha registrado para participar por un cupo en el Festival del Perro Caliente Zenú 2026!
 
-(Pieza con Tulio con mensaje de bienvenida)
+<img src="tulio.jpg" style="width:100%; max-width:280px; border-radius:16px; margin:10px 0;" />
 
 Ahora es tu turno de registrar todas tus facturas de compra con productos Zenú si quieres ser uno de los 200 negocios participantes. 🌭
 
@@ -473,7 +497,7 @@ function mostrarBotonFactura() {
 
     showTyping(() => {
 
-      addMessage("Por favor sube una foto de tu factura de compra Zenú donde se vean claramente los productos 📸", "bot");
+      addMessage("Por favor sube una foto de tu factura de compra Zenú donde se vean claramente los nombres de los productos 📸", "bot");
 
       setTimeout(() => {
         simularSubidaFactura();
@@ -682,7 +706,7 @@ function confirmarNit(esCorrecto) {
 
       } else {
         addMessage(
-          "Tu negocio aún no está registrado.\n\nVamos a crear tu registro ahora mismo.",
+          "¡Perfecto! Iniciemos el registro de tu negocio. 🏢",
           "bot"
         );
         mostrarBotonCompletarRegistro();
@@ -936,13 +960,15 @@ function mostrarBotonesDespuesCorreccion() {
   };
 
   const btnAsesor = document.createElement("button");
-  btnAsesor.textContent = "💬 Dejar mensaje a asesor";
+  btnAsesor.textContent = "🙋‍♂️ Pedir asistencia";
+
   btnAsesor.onclick = () => {
     options.remove();
-    addMessage("💬 Dejar mensaje a asesor", "user");
+    addMessage("🙋‍♂️ Pedir asistencia", "user");
 
     showTyping(() => {
-      addMessage("Gracias por tu mensaje. Nuestro asesor se pondrá en contacto contigo pronto. ✅", "bot");
+      addMessage("Por favor escribe tu mensaje y nuestro asesor lo revisará. 💬", "bot");
+      currentStep = "esperando_mensaje_asesor"; // 🔥 activamos estado
     });
   };
 
