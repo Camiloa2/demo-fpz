@@ -1,4 +1,8 @@
 /* ====== RESET ====== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background: #0b141a;
@@ -7,14 +11,15 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  height: 100%;
+  min-height: 100dvh;
 }
 
 /* ====== CONTENEDOR PRINCIPAL ====== */
 .chat-container {
   width: 90%;
   max-width: 420px;
-  height: 85vh;
+  height: 90vh;
+  height: 90dvh;
   background: #111b21;
   display: flex;
   flex-direction: column;
@@ -26,8 +31,9 @@ body {
 /* ====== HEADER ====== */
 .chat-header {
   background: #202c33;
-  padding: 15px;
+  padding: 12px 15px;
   color: white;
+  flex-shrink: 0;
 }
 
 .profile {
@@ -37,10 +43,12 @@ body {
 }
 
 .avatar {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   background: #2a3942;
   border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 
 .name {
@@ -56,16 +64,17 @@ body {
 /* ====== MENSAJES ====== */
 .chat-messages {
   flex: 1;
-  padding: 20px 15px;
+  padding: 16px 12px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ====== BURBUJA BASE ====== */
 .message {
-  max-width: 75%;
+  max-width: 78%;
   padding: 8px 12px 6px 12px;
   border-radius: 10px;
   font-size: 14px;
@@ -92,8 +101,9 @@ body {
 
 /* ====== TEXTO ====== */
 .text {
-  line-height: 1.4;
+  line-height: 1.5;
   word-wrap: break-word;
+  white-space: pre-line;
 }
 
 /* ====== META (hora + checks) ====== */
@@ -123,6 +133,7 @@ body {
   background: #202c33;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .chat-input input {
@@ -134,6 +145,7 @@ body {
   background: #2a3942;
   color: white;
   font-size: 14px;
+  min-width: 0;
 }
 
 .chat-input input::placeholder {
@@ -146,6 +158,7 @@ body {
   border: none;
   width: 40px;
   height: 40px;
+  min-width: 40px;
   border-radius: 50%;
   cursor: pointer;
   font-size: 16px;
@@ -163,10 +176,10 @@ body {
   background: #202c33;
   border-radius: 10px;
   margin-top: 6px;
-  max-width: 75%;
+  max-width: 78%;
   align-self: flex-start;
   height: auto;
-  /* 👈 FORZAR AUTO */
+  overflow: hidden;
 }
 
 .options button {
@@ -174,7 +187,7 @@ body {
   background: transparent;
   color: #53bdeb;
   border: none;
-  padding: 14px;
+  padding: 13px 14px;
   text-align: left;
   font-size: 14px;
   border-top: 1px solid #2a3942;
@@ -191,7 +204,7 @@ body {
 
 /* ====== SCROLL ESTILO ====== */
 .chat-messages::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
@@ -212,12 +225,7 @@ body {
   }
 }
 
-.text {
-  white-space: pre-line;
-}
-
-/* MODAL */
-
+/* ====== MODAL ====== */
 .modal {
   display: none;
   position: fixed;
@@ -228,13 +236,15 @@ body {
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  z-index: 999;
+  padding: 16px;
 }
 
 .modal-content {
   background: #111b21;
   padding: 20px;
   border-radius: 12px;
-  width: min(300px, 90vw);
+  width: min(340px, 92vw);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -242,33 +252,43 @@ body {
 
 .modal-content h3 {
   color: white;
+  margin: 0 0 4px 0;
+  font-size: 16px;
 }
 
 .modal-content input {
-  padding: 10px;
+  padding: 10px 12px;
   border-radius: 8px;
   border: none;
   background: #202c33;
   color: white;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
 }
 
 .modal-content button {
-  padding: 10px;
+  padding: 11px;
   border: none;
   border-radius: 8px;
   background: #00a884;
   color: white;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .modal-content select {
-  padding: 10px;
+  padding: 10px 12px;
   border-radius: 8px;
   border: none;
   background: #202c33;
   color: white;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
 }
 
+/* ====== ARCHIVOS ====== */
 .file-message {
   background: #005c4b;
 }
@@ -283,6 +303,7 @@ body {
   font-size: 24px;
 }
 
+/* ====== BOTÓN FIJO DE VOLVER ====== */
 .btn-fijo {
   position: fixed;
   bottom: 20px;
@@ -302,6 +323,7 @@ body {
   background-color: #ffc107;
 }
 
+/* ====== BOTÓN CASA EN EL HEADER ====== */
 .btn-icon-home {
   background: none;
   border: none;
@@ -310,36 +332,37 @@ body {
   margin-left: 10px;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .btn-icon-home svg {
   display: block;
-  width: 28px;
-  /* Ajusta tamaño del ícono */
-  height: 28px;
+  width: 26px;
+  height: 26px;
   fill: white;
-  /* Casa blanca */
 }
 
-/* ====== RESPONSIVE ====== */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 
-/* Móviles pequeños y medianos (≤ 480px): pantalla completa */
-@media (max-width: 480px) {
+/* ── MÓVIL (≤ 600px): pantalla completa ──────── */
+@media (max-width: 600px) {
   body {
     align-items: flex-start;
-    height: 100dvh;
   }
 
   .chat-container {
     width: 100%;
     max-width: 100%;
+    height: 100vh;
     height: 100dvh;
     border-radius: 0;
     box-shadow: none;
   }
 
   .chat-header {
-    padding: 12px 10px;
+    padding: 10px 12px;
   }
 
   .name {
@@ -350,50 +373,70 @@ body {
     font-size: 11px;
   }
 
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+
   .chat-messages {
-    padding: 14px 10px;
+    padding: 12px 10px;
     gap: 10px;
   }
 
-  .message {
-    font-size: 13px;
-    max-width: 82%;
+  .message,
+  .options button {
+    font-size: 13.5px;
   }
 
-  .options button {
-    font-size: 13px;
-    padding: 12px;
+  .message {
+    max-width: 85%;
+  }
+
+  .options {
+    max-width: 85%;
   }
 
   .chat-input {
-    padding: 8px;
+    padding: 8px 10px;
   }
 
   .chat-input input {
-    font-size: 13px;
+    font-size: 13.5px;
     padding: 9px 12px;
   }
 
-  .modal-content {
-    width: 92vw;
-    padding: 16px;
+  .chat-input button {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    font-size: 15px;
   }
 
   .btn-fijo {
-    bottom: 14px;
-    right: 14px;
+    bottom: 12px;
+    right: 12px;
     width: 44px;
     height: 44px;
     font-size: 20px;
   }
 }
 
-/* Tablets (481px - 768px): tarjeta un poco más ancha */
-@media (min-width: 481px) and (max-width: 768px) {
+/* ── TABLET (601px – 900px): tarjeta más ancha ── */
+@media (min-width: 601px) and (max-width: 900px) {
   .chat-container {
-    width: 85%;
-    max-width: 480px;
+    width: 82%;
+    max-width: 500px;
     height: 88vh;
+    height: 88dvh;
     border-radius: 16px;
+  }
+}
+
+/* ── DESKTOP GRANDE (> 1200px): un poco más alta ─ */
+@media (min-width: 1200px) {
+  .chat-container {
+    height: 85vh;
+    height: 85dvh;
+    max-width: 440px;
   }
 }
