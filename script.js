@@ -694,7 +694,7 @@ function confirmarNit(esCorrecto) {
 
       if (yaRegistrado) {
         addMessage(
-          "Ya puedes registrar más facturas; recuerda que entre mayor sea el valor acumulado de tus compras, ¡más posibilidades tienes de ser convocado! 🌭",
+          "Ya puedes registrar más facturas; recuerda que entre mayor sea el valor acumulado de tus compras, ¡más posibilidades tienes de ser convocado!🌭",
           "bot"
         );
 
